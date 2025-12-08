@@ -96,22 +96,29 @@
     }
 
     /* countdown bar under hero */
-    .hero-countdown{
-      margin-top:18px;
-      display:flex;
-      gap:12px;
-      justify-content:center;
-      flex-wrap:wrap;
-    }
-    .cd-box{
-      background: rgba(255,255,255,0.95);
-      color:var(--dark);
-      padding:10px 14px;
-      border-radius:12px;
-      min-width:74px;
-      box-shadow:0 8px 20px rgba(0,0,0,0.08);
-      text-align:center;
-    }
+  .hero-countdown{
+  margin-top:18px;
+  display:flex;
+  gap:12px;
+  justify-content:center;
+  align-items:stretch;   /* ✅ Bikin semua box sejajar */
+  flex-wrap:nowrap;      /* ✅ Paksa satu baris */
+}
+
+.cd-box{
+  background: rgba(255,255,255,0.95);
+  color:var(--dark);
+  padding:12px 0;
+  border-radius:12px;
+  width:80px;            /* ✅ Lebih stabil dibanding min-width */
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 8px 20px rgba(0,0,0,0.08);
+  text-align:center;
+}
+
     .cd-val{ font-weight:700; font-size:20px; color:var(--accent); display:block; }
     .cd-label{ font-size:12px; color:var(--muted); margin-top:6px; display:block; }
 
@@ -338,11 +345,16 @@
     <div class="hero-inner">
       <img src="assets/Asstro heritage w.png" alt="Asstro Heritage Logo" class="logo" />
       <h1 class="hero-title">Grand Opening — Asstro Heritage</h1>
-      <p class="hero-sub">
-        Kepada Yth:<br>
-        <strong id="guestName" style="font-size:22px;">Tamu Undangan</strong><br><br>
-        Kami dengan hangat mengundang Anda menghadiri peresmian Asstro Heritage — destinasi baru untuk pengalaman alam, rekreasi, dan kuliner.
-      </p>
+      <div class="hero-sub">
+  Kepada Yth:<br>
+  <strong id="guestName" style="font-size:22px;">Tamu Undangan</strong>
+  <div id="guestInfo" style="margin-top:6px;font-size:16px;opacity:.9;"></div><br>
+
+  <span>
+    Kami dengan hangat mengundang Anda menghadiri peresmian Asstro Heritage — destinasi baru untuk pengalaman alam, rekreasi, dan kuliner.
+  </span>
+</div>
+
 
       <div class="hero-pills" aria-hidden="false">
         <div class="pill">Jum'at, 12 Desember 2025</div>
