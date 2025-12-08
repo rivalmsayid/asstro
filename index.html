@@ -384,7 +384,7 @@
       <div class="hero-sub">
       Kepada Yth:<br>
       <strong id="guestName" style="font-size:22px;">Tamu Undangan</strong>
-      <div id="guestInfo" style="margin-top:6px;font-size:16px;opacity:.9;"></div><br>
+      <div id="guestInfo" style="margin-top:4px;font-size:15px;opacity:.85;font-style:italic;"></div>
 
   <span>
     Kami dengan hangat mengundang Anda menghadiri peresmian Asstro Heritage — destinasi baru untuk pengalaman alam, rekreasi, dan kuliner.
@@ -526,19 +526,28 @@
   <audio id="bgm" src="assets/ceremony.mp3" loop preload="auto"></audio>
 
   <script>
+    
 
-    // ====== Ambil Nama Tamu dari URL ======
-    (function(){
-      const params = new URLSearchParams(window.location.search);
-      const name = params.get('to');
+   // ====== Ambil Nama & Jabatan dari URL ======
+  (function(){
+    const params = new URLSearchParams(window.location.search);
+    const name = params.get('to');
+    const jabatan = params.get('jabatan');
 
-      if(name){
-        const target = document.getElementById('guestName');
-        if(target){
-          target.textContent = decodeURIComponent(name.replace(/\+/g,' '));
-        }
+    if(name){
+      const target = document.getElementById('guestName');
+      if(target){
+        target.textContent = decodeURIComponent(name.replace(/\+/g,' '));
       }
-    })();
+    }
+
+    if(jabatan){
+      const targetJabatan = document.getElementById('guestTitle');
+      if(targetJabatan){
+        targetJabatan.textContent = decodeURIComponent(jabatan.replace(/\+/g,' '));
+      }
+    }
+  })();
 
 
     // ====== Countdown to 12 Dec 2025 14:00 WIB (+07:00) ======
