@@ -268,31 +268,6 @@
   display:block;
 }
 
-
-    /* RSVP */
-    .rsvp-wrap{
-      max-width:520px;
-      margin:18px auto 0;
-    }
-    .rsvp input, .rsvp textarea, .rsvp select{
-      width:100%;
-      padding:12px 14px;
-      border-radius:10px;
-      border:1px solid #e6e6e6;
-      margin-bottom:12px;
-      font-size:15px;
-    }
-    .rsvp button{
-      width:100%;
-      padding:12px;
-      background:var(--accent);
-      color:#fff;
-      font-weight:700;
-      border:none;
-      border-radius:10px;
-      cursor:pointer;
-    }
-
     /* map */
     .map-wrap iframe{
       width:100%;
@@ -466,10 +441,10 @@
       <img src="assets/Asstro heritage w.png" alt="Asstro Heritage Logo" class="logo" />
       <h1 class="hero-title">Grand Opening — Asstro Heritage</h1>
       <div class="hero-sub">
-      Kepada Yth:<br>
+      <strong>Kepada Yth:</strong><br>
      <strong id="guestName">Tamu Undangan</strong>
       <div id="guestInfo"></div>
-<br>
+  <br>
   <span>
     Kami dengan hangat mengundang Anda menghadiri peresmian Asstro Heritage — destinasi baru untuk pengalaman alam, rekreasi, dan kuliner.
   </span>
@@ -601,15 +576,36 @@
     © 2025 Asstro Heritage — Undangan Grand Opening. Simpan halaman ini untuk info & update.
   </footer>
 
-  <!-- Audio controls -->
-  <div class="audio-fixed" aria-hidden="false">
-    <button id="playBtn" class="audio-btn" aria-pressed="false" title="Play/Pause Musik">🔈</button>
-    <button id="muteBtn" class="audio-btn" aria-pressed="false" title="Mute/Unmute">🔇</button>
-  </div>
+<!-- Audio controls -->
+<div class="audio-fixed" aria-hidden="false">
+  <button id="playBtn" class="audio-btn" aria-pressed="false" title="Play/Pause Musik">🔈</button>
+  <button id="muteBtn" class="audio-btn" aria-pressed="false" title="Mute/Unmute">🔇</button>
+</div>
 
-  <audio id="bgm" src="assets/ceremony.mp3" loop preload="auto"></audio>
+<audio id="bgm" src="assets/ceremony.mp3" loop></audio>
 
   <script>
+
+    const bgm = document.getElementById("bgm");
+  const playBtn = document.getElementById("playBtn");
+  const muteBtn = document.getElementById("muteBtn");
+
+  // PLAY / PAUSE
+  playBtn.addEventListener("click", () => {
+    if (bgm.paused) {
+      bgm.play();
+      playBtn.textContent = "🔊"; // icon saat play
+    } else {
+      bgm.pause();
+      playBtn.textContent = "🔈"; // icon saat pause
+    }
+  });
+
+  // MUTE / UNMUTE
+  muteBtn.addEventListener("click", () => {
+    bgm.muted = !bgm.muted;
+    muteBtn.textContent = bgm.muted ? "🔇" : "🔉";
+  });
 
     // ===== Scroll Animation (Card Muncul Saat Di-scroll)
 const cards = document.querySelectorAll('.card');

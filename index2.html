@@ -1,0 +1,431 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Grand Opening — Asstro Heritage</title>
+  <meta name="description" content="Undangan digital peresmian Asstro Heritage — Grand Opening" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --dark:#1e2a22;
+      --accent:#b33a2f;
+      --light:#f7f7f5;
+      --muted:#6b736d;
+      --glass: rgba(255,255,255,0.12);
+      --max-width:1100px;
+    }
+    *{box-sizing:border-box;}
+    html,body{height:100%;}
+    body{
+      margin:0;
+      font-family:'Poppins',sans-serif;
+      background:var(--light);
+      color:#222;
+      line-height:1.6;
+    }
+
+    /* HERO */
+    .hero {
+      height:100vh;
+      min-height:640px;
+      background: url('assets/fasad2.png') center/cover no-repeat;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      position:relative;
+      overflow:hidden;
+    }
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.3), rgba(0,0,0,0.18));
+      z-index:1;
+      pointer-events:none;
+    }
+    .hero-inner{
+      position:relative;
+      z-index:2;
+      max-width:var(--max-width);
+      width:100%;
+      color:#fff;
+      padding: 10px 20px;
+    }
+    .logo{
+      width:300px;
+      max-width:60%;
+      margin:0 auto 14px;
+    }
+    .hero-title{
+      font-family:'Playfair Display', serif;
+      font-size:48px;
+      margin:6px 0 12px;
+      font-weight:700;
+    }
+    .hero-sub{
+      max-width:760px;
+      margin:0 auto 18px;
+      font-weight:300;
+      font-size:18px;
+      color:rgba(255,255,255,0.95);
+    }
+    .hero-pills{
+      display:flex;
+      gap:12px;
+      justify-content:center;
+      flex-wrap:wrap;
+      margin-top:14px;
+    }
+    .pill{
+      background: rgba(255,255,255,0.14);
+      color:#fff;
+      padding:10px 18px;
+      border-radius:28px;
+      border:1px solid rgba(255,255,255,0.12);
+      font-size:0.95rem;
+      backdrop-filter: blur(4px);
+    }
+
+    /* countdown */
+    .hero-countdown{
+      margin-top:18px;
+      display:flex;
+      gap:12px;
+      justify-content:center;
+      align-items:stretch;
+      flex-wrap:nowrap;
+    }
+    .cd-box{
+      background: rgba(255,255,255,0.95);
+      color:var(--dark);
+      padding:12px 0;
+      border-radius:12px;
+      width:80px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+    }
+    .cd-val{ font-weight:700; font-size:20px; color:var(--accent); display:block; }
+    .cd-label{ font-size:12px; color:var(--muted); margin-top:6px; display:block; }
+
+    main{
+      max-width:var(--max-width);
+      margin: 40px auto;
+      padding: 0 18px 60px;
+    }
+    .card{
+      background:#fff;
+      border-radius:14px;
+      padding:28px;
+      margin-bottom:28px;
+      box-shadow:0 10px 30px rgba(0,0,0,0.06);
+      opacity:0;
+      transform: translateY(40px);
+      transition: all 0.8s ease;
+    }
+    .card.show{
+      opacity:1;
+      transform: translateY(0);
+    }
+
+    h2{
+      font-family:'Playfair Display', serif;
+      font-size:28px;
+      margin:0 0 12px;
+      text-align:center;
+    }
+    p.lead-center{
+      text-align:center;
+      color:var(--muted);
+      max-width:900px;
+      margin:0 auto 12px;
+    }
+
+    .detail-grid{
+      display:flex;
+      gap:20px;
+      flex-wrap:wrap;
+      justify-content:center;
+      margin-top:20px;
+    }
+    .detail-item{
+      background: rgba(255,255,255,0.5);
+      border:1px solid rgba(0,0,0,0.08);
+      border-radius:14px;
+      padding:16px 20px;
+      width:100%;
+      max-width:300px;
+      display:flex;
+      align-items:center;
+      gap:14px;
+    }
+    .detail-icon{
+      font-size:1.7rem;
+    }
+
+    /* Agenda */
+    .agenda-card{
+      background:#fff;
+      border-radius:14px;
+      padding:14px 16px;
+      font-size:14px;
+      box-shadow:0 4px 14px rgba(0,0,0,0.05);
+      margin-bottom:10px;
+      text-align:center;
+    }
+    .agenda-card .time{ font-weight:600; color:#ff0000; font-size:13px; }
+    .agenda-card .text{ margin-top:4px; }
+
+    /* Audio overlay */
+    #audioGate {
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,0.7);
+      backdrop-filter:blur(6px);
+      z-index:999999;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      flex-direction:column;
+      text-align:center;
+      color:#fff;
+      font-family:'Poppins',sans-serif;
+    }
+    #audioGate button{
+      margin-top:12px;
+      padding:14px 28px;
+      font-size:16px;
+      background:#b33a2f;
+      color:#fff;
+      border:none;
+      border-radius:14px;
+      font-weight:700;
+      cursor:pointer;
+    }
+
+    /* Audio fixed */
+    .audio-fixed{
+      position:fixed;
+      right:16px;
+      bottom:16px;
+      display:flex;
+      gap:8px;
+      z-index:9999;
+    }
+    .audio-btn{
+      background:rgba(0,0,0,0.6);
+      color:#fff;
+      border:none;
+      padding:10px 12px;
+      border-radius:10px;
+      cursor:pointer;
+      font-weight:600;
+    }
+
+    footer{
+      margin-top:28px;
+      padding:24px 18px;
+      text-align:center;
+      background:var(--dark);
+      color:#fff;
+      border-radius:12px;
+    }
+
+    @media (max-width:720px){
+      .hero-title{ font-size:32px; }
+      .hero-sub{ font-size:16px; }
+      .cd-val{ font-size:18px; }
+    }
+
+    .gallery-single img{
+  width:100%;
+  max-width:600px;     /* 🔥 biar gak terlalu lebar */
+  height:300px;
+  object-fit:cover;
+  border-radius:16px;
+  box-shadow:0 6px 20px rgba(0,0,0,0.08);
+  margin:0 auto;
+  display:block;
+}
+
+    /* map */
+    .map-wrap iframe{
+      width:100%;
+      height:320px;
+      border:0;
+      border-radius:12px;
+      box-shadow:0 8px 20px rgba(0,0,0,0.06);
+    }
+
+  </style>
+</head>
+<body>
+
+<!-- Audio overlay -->
+<div id="audioGate">
+  <h2>🔊 Putar Musik</h2>
+  <button id="startAudio">Mulai Musik</button>
+</div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-inner">
+    <img src="assets/Asstro heritage w.png" class="logo" alt="Asstro Heritage Logo">
+    <h1 class="hero-title">Grand Opening — Asstro Heritage</h1>
+    <div class="hero-sub">
+      Kepada Yth:<br>
+      <strong id="guestName">Tamu Undangan</strong>
+      <div id="guestInfo"></div>
+      <br>
+      <span>Kami dengan hangat mengundang Anda menghadiri peresmian Asstro Heritage — destinasi baru untuk pengalaman alam, rekreasi, dan kuliner.</span>
+    </div>
+    <div class="hero-pills">
+      <div class="pill">Jum'at, 12 Desember 2025</div>
+      <div class="pill">14:00 WIB — Selesai</div>
+      <div class="pill">Asstro Heritage Laswi</div>
+    </div>
+    <div class="hero-countdown">
+      <div class="cd-box"><span class="cd-val" id="cd-days">--</span><span class="cd-label">Hari</span></div>
+      <div class="cd-box"><span class="cd-val" id="cd-hours">--</span><span class="cd-label">Jam</span></div>
+      <div class="cd-box"><span class="cd-val" id="cd-min">--</span><span class="cd-label">Menit</span></div>
+      <div class="cd-box"><span class="cd-val" id="cd-sec">--</span><span class="cd-label">Detik</span></div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- Sambutan -->
+  <section class="card" id="sambutan">
+    <h2>Sambutan Pembuka</h2>
+    <p class="lead-center">Dengan penuh rasa syukur, kami menyampaikan undangan kepada Anda untuk hadir dalam Grand Opening Asstro Heritage Laswi...</p>
+  </section>
+
+  <!-- Detail Acara -->
+  <section class="card detail-card" id="detail">
+    <h2>Detail Acara</h2>
+    <div class="detail-grid">
+      <div class="detail-item"><div class="detail-icon">📅</div><div><strong>Tanggal & Waktu</strong><small>Jum'at, 12 Desember 2025<br>Pukul 14:00 WIB</small></div></div>
+      <div class="detail-item"><div class="detail-icon">📍</div><div><strong>Lokasi</strong><small>Asstro Heritage Laswi — Bandung</small></div></div>
+      <div class="detail-item"><div class="detail-icon">👕</div><div><strong>Dresscode</strong><small>Busana Bebas, Rapi, dan Nyaman</small></div></div>
+    </div>
+  </section>
+
+  <!-- Agenda -->
+  <section class="card">
+    <h2>Agenda Acara</h2>
+    <div class="agenda-card">Pembukaan</div>
+    <div class="agenda-card">Pembacaan Ayat Suci Al-Qur’an</div>
+    <div class="agenda-card">Sambutan</div>
+    <div class="agenda-card">Santunan Anak Yatim Piatu</div>
+    <div class="agenda-card">Tausiyah & Doa</div>
+    <div class="agenda-card">Gunting Pita</div>
+    <div class="agenda-card">Tour Area</div>
+    <div class="agenda-card">Ceremonial Potong Tumpeng</div>
+    <div class="agenda-card">Ramah Tamah</div>
+    <div class="agenda-card">Hiburan (Band Titanium)</div>
+  </section>
+
+  <!-- Galeri -->
+<section class="card" id="gallery" aria-labelledby="gallery-title">
+  <h2 id="gallery-title">Galeri</h2>
+
+  <div class="gallery-single">
+    <img src="assets/Asstro Heritage.png" alt="Galeri Asstro Heritage">
+  </div>
+</section>
+
+
+
+    <!-- Map & Contact -->
+    <section class="card" id="contact" aria-labelledby="contact-title">
+      <h2 id="contact-title">Lokasi</h2>
+
+      <div style="display:grid; grid-template-columns:1fr; gap:18px;">
+        <div class="map-wrap" aria-hidden="false">
+          <!-- Ganti src embed dengan koordinat lokasi apabila perlu -->
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.7676819173084!2d107.63000497356529!3d-6.918353967710605!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e70076198639%3A0xbca4178179aa83f8!2sAsstro%20Heritage!5e0!3m2!1sid!2sid!4v1765172509332!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+</main>
+
+<footer>
+  © 2025 Asstro Heritage — Undangan Grand Opening.
+</footer>
+
+<!-- Audio player -->
+<div class="audio-fixed">
+  <button id="playBtn" class="audio-btn">🔈</button>
+  <button id="muteBtn" class="audio-btn">🔇</button>
+</div>
+
+<audio id="bgm" src="assets/ceremony.mp3" loop preload="auto"></audio>
+
+<script>
+  // Scroll animation
+  const cards = document.querySelectorAll('.card');
+  const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting) entry.target.classList.add('show');
+    });
+  }, { threshold: 0.15 });
+  cards.forEach(c => observer.observe(c));
+
+  // Countdown
+  (function(){
+    const target = new Date("2025-12-12T14:00:00+07:00").getTime();
+    const dEl = id=>document.getElementById(id);
+    function pad2(n){ return String(n).padStart(2,'0'); }
+    function tick(){
+      let diff = target - Date.now();
+      if(diff<0) diff=0;
+      dEl('cd-days').textContent = pad2(Math.floor(diff/(1000*60*60*24)));
+      dEl('cd-hours').textContent = pad2(Math.floor((diff%(1000*60*60*24))/(1000*60*60)));
+      dEl('cd-min').textContent = pad2(Math.floor((diff%(1000*60*60))/(1000*60)));
+      dEl('cd-sec').textContent = pad2(Math.floor((diff%(1000*60))/1000));
+    }
+    tick(); setInterval(tick,1000);
+  })();
+
+  // Audio play
+  const audio = document.getElementById('bgm');
+  const gate = document.getElementById('audioGate');
+  const start = document.getElementById('startAudio');
+  const playBtn = document.getElementById('playBtn');
+  const muteBtn = document.getElementById('muteBtn');
+
+  function startMusic(){
+    audio.play().then(()=>{ gate.style.display='none'; playBtn.textContent='🔊'; }).catch(err=>console.log(err));
+  }
+  start.addEventListener('click', startMusic);
+
+  playBtn.addEventListener('click', ()=>{
+    if(audio.paused){ audio.play(); playBtn.textContent='🔊'; }
+    else { audio.pause(); playBtn.textContent='▶️'; }
+  });
+  muteBtn.addEventListener('click', ()=>{
+    audio.muted = !audio.muted;
+    muteBtn.textContent = audio.muted?'🔇':'🔈';
+  });
+
+  // Guest Name from URL
+  (function(){
+    const params = new URLSearchParams(window.location.search);
+    const name = params.get('to');
+    const info = params.get('info');
+    if(name) document.getElementById('guestName').textContent = decodeURIComponent(name.replace(/\+/g,' '));
+    if(info) document.getElementById('guestInfo').textContent = decodeURIComponent(info.replace(/\+/g,' '));
+  })();
+</script>
+
+</body>
+</html>
